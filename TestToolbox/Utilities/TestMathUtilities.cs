@@ -1,6 +1,6 @@
 ﻿using Toolbox.Utilities;
 
-namespace TestToolbox
+namespace TestToolbox.Utilities
 {
     public class TestMathUtilities
     {
@@ -8,7 +8,7 @@ namespace TestToolbox
         public void PrimesTest()
         {
             List<long> expectedResultFor10 = new List<long> { 2, 3, 5, 7 };
-            
+
             var resultFor10 = MathUtilities.Primes(10);
             var resultNegative = MathUtilities.Primes(-10);
             var resultZero = MathUtilities.Primes(0);
@@ -23,7 +23,7 @@ namespace TestToolbox
             });
 
             Assert.That(resultNegative.Count, Is.EqualTo(0));
-            
+
             Assert.That(resultZero.Count, Is.EqualTo(0));
         }
 
@@ -61,6 +61,25 @@ namespace TestToolbox
         [Test]
         public void LCMTest()
         {
+            var result1 = MathUtilities.LCM(new List<long>{ 2, 5});
+            var result2 = MathUtilities.LCM(new List<long> { 3, 10 });
+            var result4 = MathUtilities.LCM(new List<long> { 2, 7, 11 });
+            var result5 = MathUtilities.LCM(new List<long> { 51, 135 });
+            var result6 = MathUtilities.LCM(new List<long> { 78, 1257, 123654 });
+            var result7 = MathUtilities.LCM(new List<long> { 3,4,5,6,7,8 });
+            var result8 = MathUtilities.LCM(new List<long> { });
+            var result9 = MathUtilities.LCM(new List<long> { 2 });
+            var result10 = MathUtilities.LCM(new List<long> { 1, -5 });
+
+            Assert.That(result1, Is.EqualTo(10));
+            Assert.That(result2, Is.EqualTo(30));
+            Assert.That(result4, Is.EqualTo(154));
+            Assert.That(result5, Is.EqualTo(2295));
+            Assert.That(result6, Is.EqualTo(673543338));
+            Assert.That(result7, Is.EqualTo(840));
+
+            Assert.That(result8, Is.EqualTo(0));
+            Assert.That(result9, Is.EqualTo(5));
 
         }
     }

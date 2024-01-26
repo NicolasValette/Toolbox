@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace Toolbox.Utilities
 {
- 
     /// <summary>
     /// This class contains multiple mathematical function
     /// </summary>
