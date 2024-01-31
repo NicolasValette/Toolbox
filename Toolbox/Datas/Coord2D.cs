@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace Toolbox.Datas
 {
+    /// <summary>
+    /// Coord class
+    /// </summary>
+    /// <typeparam name="T">the type of the data, only decimal data</typeparam>
     public class Coord2D<T> where T : IComparable, IComparable<T>, IEquatable<T>
     {
         public T X { get; set; }

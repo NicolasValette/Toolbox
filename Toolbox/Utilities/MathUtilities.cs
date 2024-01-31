@@ -32,10 +32,14 @@ namespace Toolbox.Utilities
         /// <returns>The list of LCM of given numbers</returns>
         public static long LCM(List<long> numbers)
         {
+            if (numbers.Count == 0)     // If the number list is empty, we can't compute LCM.
+            {
+                return 0;
+            }
             List<(long, long)> factors = new List<(long, long)>();
             for (int i = 0; i < numbers.Count; i++)
             {
-                List<(long, long)> factor = Factor(numbers[i]);
+                List<(long, long)> factor = Factor(Math.Abs(numbers[i]));
                 for (int j = 0; j < factor.Count; j++)
                 {
                     if (factors.Exists(x => x.Item1 == factor[j].Item1))

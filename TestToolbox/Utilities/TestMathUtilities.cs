@@ -79,7 +79,8 @@ namespace TestToolbox.Utilities
             Assert.That(result7, Is.EqualTo(840));
 
             Assert.That(result8, Is.EqualTo(0));
-            Assert.That(result9, Is.EqualTo(5));
+            Assert.That(result9, Is.EqualTo(2));
+            Assert.That(result10, Is.EqualTo(5));
 
         }
     }
