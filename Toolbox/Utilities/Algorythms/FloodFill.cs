@@ -6,47 +6,47 @@ using System.Threading.Tasks;
 
 namespace Toolbox.Utilities.Algorythms
 {
-    public class FloodFill
+    public class FloodFill<T> : IFloodFill<T> where T : IEquatable<T>
     {
         /// <summary>
-        /// Flood fill function
+        /// Flood fill method.
         /// </summary>
-        /// <param name="i"></param>
-        /// <param name="j"></param>
-        /// <param name="inp"></param>
-        public static void Execute(int i, int j, ref char[][] inp)
+        /// <param name="startingLine"></param>
+        /// <param name="startingRow"></param>
+        /// <param name="input"></param>
+        /// <param name="target">the character we want to replace</param>
+        /// <param name="replacement"></param>
+        public void Flood(int startingLine, int startingRow, ref T[][] input, T target, T replacement)
         {
             // We need to implemant an internal stack to optimize compute time and avoid stack overflow error.
             Stack<(int, int)> stack = new Stack<(int, int)>();
-            if (inp[i][j] == '#')
+            if (input[startingLine][startingRow].Equals(target))
             {
-                stack.Push((i, j));
+                stack.Push((startingLine, startingRow));
                 while (stack.Count > 0)
                 {
                     (int, int) pair = stack.Pop();
-                    inp[pair.Item1][pair.Item2] = '@';
+                    input[pair.Item1][pair.Item2] = replacement;
 
-                    if (pair.Item1 - 1 >= 0 && inp[pair.Item1 - 1][pair.Item2] == '#')
+                    if (pair.Item1 - 1 >= 0 && input[pair.Item1 - 1][pair.Item2].Equals(target))
                     {
                         stack.Push((pair.Item1 - 1, pair.Item2));
                     }
-                    if (pair.Item1 + 1 < inp.Length && inp[pair.Item1 + 1][pair.Item2] == '#')
+                    if (pair.Item1 + 1 < input.Length && input[pair.Item1 + 1][pair.Item2].Equals(target))
                     {
                         stack.Push((pair.Item1 + 1, pair.Item2));
                     }
-                    if (pair.Item2 - 1 >= 0 && inp[pair.Item1][pair.Item2 - 1] == '#')
+                    if (pair.Item2 - 1 >= 0 && input[pair.Item1][pair.Item2 - 1].Equals(target))
                     {
                         stack.Push((pair.Item1, pair.Item2 - 1));
                     }
-                    if (pair.Item2 + 1 < inp[pair.Item1].Length && inp[pair.Item1][pair.Item2 + 1] == '#')
+                    if (pair.Item2 + 1 < input[pair.Item1].Length && input[pair.Item1][pair.Item2 + 1].Equals(target))
                     {
                         stack.Push((pair.Item1, pair.Item2 + 1));
                     }
-
                 }
-
-
             }
         }
+
     }
 }
