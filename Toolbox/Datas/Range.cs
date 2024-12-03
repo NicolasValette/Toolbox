@@ -30,5 +30,28 @@ namespace Toolbox.Datas
             MinValue = min;
             MaxValue = max;
         }
+
+        public bool IsInRange(int value, bool minInclusive = false, bool maxInclusive = false)
+        {
+            if (!minInclusive && !maxInclusive)
+            {
+                return MinValue < value && value < MaxValue;
+            }
+            else if (!minInclusive && maxInclusive)
+            {
+                return MinValue < value && value <= MaxValue;
+            }
+            else if (minInclusive && !maxInclusive)
+            {
+                return MinValue <= value && value < MaxValue;
+            }
+            else if (minInclusive && maxInclusive)
+            {
+                return MinValue <= value && value <= MaxValue;
+            }
+            else
+                return false;
+
+        }
     }
 }
