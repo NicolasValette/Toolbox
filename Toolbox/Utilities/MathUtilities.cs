@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Toolbox.Datas;
 
 namespace Toolbox.Utilities
 {
@@ -95,5 +96,11 @@ namespace Toolbox.Utilities
             }
             return factor;
         }
+
+        public static Coord2D<float> GetMiddle(Coord2D<float> pointA, Coord2D<float> pointB)
+        {
+            return new Coord2D<float>((pointA.X + pointB.X) / 2, (pointA.Y + pointB.Y) / 2);
+        }
     }
+    
 }
