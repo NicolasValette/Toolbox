@@ -11,18 +11,18 @@ namespace Toolbox.Utilities.Algorythms
         /// <summary>
         /// Flood fill method.
         /// </summary>
-        /// <param name="startingLine"></param>
         /// <param name="startingRow"></param>
+        /// <param name="startingCol"></param>
         /// <param name="input"></param>
         /// <param name="target">the character we want to replace</param>
-        /// <param name="replacement"></param>
-        public void Flood(int startingLine, int startingRow, ref T[][] input, T target, T replacement)
+        /// <param name="replacement">The replacement</param>
+        public void Flood(int startingRow, int startingCol, ref T[][] input, T target, T replacement)
         {
             // We need to implemant an internal stack to optimize compute time and avoid stack overflow error.
             Stack<(int, int)> stack = new Stack<(int, int)>();
-            if (input[startingLine][startingRow].Equals(target))
+            if (input[startingRow][startingCol].Equals(target))
             {
-                stack.Push((startingLine, startingRow));
+                stack.Push((startingRow, startingCol));
                 while (stack.Count > 0)
                 {
                     (int, int) pair = stack.Pop();
