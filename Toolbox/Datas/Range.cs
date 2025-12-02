@@ -11,10 +11,10 @@ namespace Toolbox.Datas
     /// </summary>
     public class Range
     { 
-        public int MinValue { get; private set; }
-        public int MaxValue { get; private set; }
+        public long MinValue { get; private set; }
+        public long MaxValue { get; private set; }
         public long Count { get => ((MaxValue - MinValue) + 1L); }
-        public Range(int min, int max)
+        public Range(long min, long max)
         {
             MinValue = min;
             MaxValue = max;
@@ -25,13 +25,13 @@ namespace Toolbox.Datas
         /// </summary>
         /// <param name="min"></param>
         /// <param name="max"></param>
-        public void UpdateRange(int min, int max)
+        public void UpdateRange(long min, long max)
         {
             MinValue = min;
             MaxValue = max;
         }
 
-        public bool IsInRange(int value, bool minInclusive = false, bool maxInclusive = false)
+        public bool IsInRange(long value, bool minInclusive = false, bool maxInclusive = false)
         {
             if (!minInclusive && !maxInclusive)
             {
