@@ -108,6 +108,29 @@ namespace Toolbox.Datas
 
             return false;
         }
+        public long BFSFromStart() => BFS(Starting);
+        public long BFS(T startingNode)
+        {
+            var visited = new HashSet<string>();
+            var queue = new Queue<T>();
+            queue.Enqueue(startingNode);
+            int nbPath = 0;
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+                if (Final.Contains(current))
+                {
+                    nbPath++;
+                    continue;
+                }
+                foreach (var connection in _edges[current.ToString()])
+                {
+                    queue.Enqueue(connection);
+                }
+            }
+
+            return nbPath;
+        }
 
         public void DepthSearchFromStart(T start)
         {
@@ -209,7 +232,9 @@ namespace Toolbox.Datas
             sb.AppendLine();
             foreach (KeyValuePair<string, LinkedList<T>> node in _edges)
             {
-                sb.Append($"{node.Key} = ({node.Value.First.Value}, {node.Value.First.Next.Value})\n");
+                sb.Append($"{node.Key} = (");
+                sb.Append(string.Join(",", node.Value));
+                sb.Append(")\n");
             }
 
             sb.AppendLine("===========");
